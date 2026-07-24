@@ -4,7 +4,7 @@ import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
-import java.util.LinkedList;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,20 +24,23 @@ public class BlackBeltParser implements FilenameParser {
         String form = m.group(3);
         String date = m.group(5);
 
+        boolean hasCommentary 
+            = filename.toLowerCase().contains("commentary");
+
         Metadata md = new Metadata();
         md.setSourceFilename(filename);
-        md.setTitle(String.format("%s Dan %s Self-Defense (%s) - Haidong Gumdo", dan, form, date.substring(0,7)));
+        md.setTitle(String.format("%s Dan %s Self-Defense (%s)%s- Haidong Gumdo", dan, form, date.substring(0,7), hasCommentary ? " Commentary " : " "));
         md.setDescription(filename);
         md.setRecordingDate(LocalDate.parse(date, DATE));
+        md.setPlaylists(
+            Arrays.asList(String.format("%s Dan %s Self-Defense", dan, form), hasCommentary ? "Commentary" : null)
+                .stream()
+                .filter(Objects::nonNull)
+                .toList()
+        );
         
-        LinkedList<String> playlists = new LinkedList<>();
-        playlists.add(String.format("%s Dan %s Self-Defense", dan, form));
-        if (filename.toLowerCase().contains("commentary")) {
-            playlists.add("Commentary");
-        }
-        md.setPlaylists(playlists);
         
-        md.setTags(Arrays.asList());
+        
         md.setMadeForKids(false);
         return Optional.of(md);
     }

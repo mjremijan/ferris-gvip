@@ -3,7 +3,6 @@ package com.gumdojourney.gvip.parser.parsers;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Optional;
 import java.util.regex.Matcher;
@@ -36,7 +35,6 @@ public class TwoHandedParser implements FilenameParser {
         }
         md.setPlaylists(playlists);
 
-        md.setTags(Arrays.asList());
         md.setMadeForKids(false);
         return Optional.of(md);
     }
