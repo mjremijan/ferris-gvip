@@ -56,6 +56,7 @@ public class App {
         List<Path> files = discoverMp4Files(Paths.get(root), resolver);
         LOG.info("Discovered {} video file(s) under {}", files.size(), root);
         for (Path p : files) {
+            System.out.println("----------------------------------------");
             System.out.println("FOUND_VIDEO=" + p);
             processFile(p, pm, state, config);
         }
@@ -138,5 +139,7 @@ public class App {
         System.out.println(
                 "VIDEO_METADATA\n |filename='" + filename + "'\n |title='" + md.getTitle() + "'\n |description='" + md.getDescription() + "'\n |recordingDate=" + md.getRecordingDate() + "\n |playlists=" + md.getPlaylists() + "\n |tags=" + md.getTags() + "\n |madeForKids=" + md.isMadeForKids() + "\n |sourceFilename='" + md.getSourceFilename() + "'"
         );
+        System.out.println("----------------------------------------");
+        System.out.println();
     }
 }
