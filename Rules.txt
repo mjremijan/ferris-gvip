@@ -116,7 +116,7 @@ This is the fourth example file name: "Two-handed sword form #11 [쌍수검법 1
 
 From this fourth example file name, extract the following information for the YouTube video properties.
 
-YouTube title: "Two-Handed #11 (2025-11) Commentary - Haidong Gumdo". For the YouTube title, Two-Handed should have the first letters capitalized and the word Commentary should have the first letter capitalized. If "commentary" does not exist in the file name, then "Commentary" should not be included in the title. The value "#11" in the title should be replaced by whatever is in the associated spot in the file name. "2025" is the year and "11" is the month of the date string "2025-11-25" in the filename.
+YouTube title: "Two-Handed Sword Form #11 (2025-11) Commentary - Haidong Gumdo". For the YouTube title, Two-Handed should have the first letters capitalized. The word Sword should hve the first letter capitalized. The word Form should have the first letter capitalized. The word Commentary should have the first letter capitalized. If "commentary" does not exist in the file name, then "Commentary" should not be included in the title. The value "#11" in the title should be replaced by whatever is in the associated spot in the file name. "2025" is the year and "11" is the month of the date string "2025-11-25" in the filename.
 
 YouTube description: Use the file name itself as the description, including the korean characters.    
 

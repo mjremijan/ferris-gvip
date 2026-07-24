@@ -4,6 +4,7 @@ import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -21,12 +22,20 @@ public class BasicMovementParser implements FilenameParser {
         if (!m.find()) return Optional.empty();
         String date = m.group(1);
 
+        boolean hasCommentary
+            = filename.toLowerCase().contains("commentary");
+
         Metadata md = new Metadata();
         md.setSourceFilename(filename);
-        md.setTitle(String.format("Basic Movement (%s) - Haidong Gumdo", date.substring(0,7)));
+        md.setTitle(String.format("Basic Movement (%s)%s- Haidong Gumdo", date.substring(0,7), hasCommentary ? " Commentary" : " "));
         md.setDescription(filename);
         md.setRecordingDate(LocalDate.parse(date, DATE));
-        md.setPlaylists(Arrays.asList("Basic Movement"));
+        md.setPlaylists(
+            Arrays.asList("Basic Movement", hasCommentary ? "Commentary" : null)
+                .stream()
+                .filter(Objects::nonNull)
+                .toList()
+        );
         md.setMadeForKids(false);
         return Optional.of(md);
     }

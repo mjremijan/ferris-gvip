@@ -458,7 +458,7 @@ Color 1st Self-Defense (2022-08) Commentary - Haidong Gumdo
 
 **Description:**
 
-The complete original filename.
+The complete original filename without the .mp4 extension.
 
 **Primary playlist:**
 
@@ -509,7 +509,7 @@ Black belt 1st Dan 2nd self-defense form \[유단자 1단 두번째 격검] comm
 
 **Description:**
 
-The complete original filename.
+The complete original filename without the .mp4 extension.
 
 **Primary playlist:**
 
@@ -558,7 +558,7 @@ Personal 1st Self-Defense (2026-07) Commentary - Haidong Gumdo
 
 **Description:**
 
-The complete original filename.
+The complete original filename without the .mp4 extension.
 
 **Primary playlist:**
 
@@ -601,12 +601,12 @@ Two-handed sword form #11 \[쌍수검법 11번] commentary - Haidong Gumdo (2025
 **Title:**
 
 ```text
-Two-Handed #11 (2025-11) Commentary - Haidong Gumdo
+Two-Handed #11 Sword Form (2025-11) Commentary - Haidong Gumdo
 ```
 
 **Description:**
 
-The complete original filename.
+The complete original filename without the .mp4 extenstion.
 
 **Primary playlist:**
 
@@ -631,6 +631,8 @@ Commentary
 * Recognize the `Two-handed sword form` prefix.
 * Extract the form number, such as `#11`.
 * Normalize `Two-handed` to `Two-Handed`.
+* Normalize `sword` to `Sword`.
+* Normalize `form` to `Form`.
 * Use the form number in the title.
 * Use the form number in the primary playlist.
 * Detect `commentary` case-insensitively.
@@ -642,7 +644,7 @@ Commentary
 #### Example
 
 ```text
-Basic movement \[기본동작] - Haidong Gumdo (2023-07-20 06.08).mp4
+Basic movement \[기본동작] commentary - Haidong Gumdo (2023-07-20 06.08).mp4
 ```
 
 #### Extracted Properties
@@ -650,17 +652,23 @@ Basic movement \[기본동작] - Haidong Gumdo (2023-07-20 06.08).mp4
 **Title based on the filename:**
 
 ```text
-Basic Movement (2023-07) - Haidong Gumdo
+Basic Movement (2023-07) Commentary - Haidong Gumdo
 ```
 
 **Description:**
 
-The complete original filename.
+The complete original filename without the .mp4 extension.
 
 **Primary playlist:**
 
 ```text
 Basic Movement
+```
+
+**Additional playlist:**
+
+```text
+Commentary
 ```
 
 **Recording date:**
@@ -674,24 +682,9 @@ Basic Movement
 * Recognize the `Basic movement` prefix.
 * Normalize it to `Basic Movement`.
 * Assign the `Basic Movement` playlist.
+* Detect `commentary` case-insensitively.
+* Include `Commentary` in the title when present.
 * Extract the date from the final date/time segment.
-* Include `Commentary` in the title and playlist only if the filename contains `commentary`.
-
-#### Requirement Clarification
-
-An earlier expected title included `Commentary`, even though the example filename does not contain that word:
-
-```text
-Basic Movement (2023-07) Commentary - Haidong Gumdo
-```
-
-The current general rule is that `Commentary` is included only when it occurs in the filename. Therefore, the expected title for the supplied example is currently:
-
-```text
-Basic Movement (2023-07) - Haidong Gumdo
-```
-
-This decision should be confirmed before implementation.
 
 ### 8.7 Filename Format 6: Belt Test Montage
 
@@ -711,7 +704,7 @@ Red-Blue Belt Test (2023-07) - Haidong Gumdo
 
 **Description:**
 
-The complete original filename.
+The complete original filename without the .mp4 extension
 
 **Primary playlist:**
 
@@ -736,21 +729,6 @@ Belt Tests
 * Extract the date from the final date/time segment.
 * Do not assign the `Commentary` playlist unless the final rule explicitly adds it.
 
-#### Requirement Clarification
-
-An earlier requirement stated the recording date as `2023-07-20`, but the supplied filename contains:
-
-```text
-2023-07-12
-```
-
-The current rule is to use the date contained in the filename. Therefore, the expected recording date is currently:
-
-```text
-2023-07-12
-```
-
-This decision should be confirmed before implementation.
 
 ### 8.8 Playlist Assignment
 
