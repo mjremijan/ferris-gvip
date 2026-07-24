@@ -1,0 +1,226 @@
+
+Rule #1 
+
+This is the first example file name: "Color belt 1st self-defense form [유급자 첫번째 격검] commentary - Haidong Gumdo (2022-08-13 05.28).mp4"
+
+From this first example file name, extract the following information for the YouTube video properties.
+
+YouTube title: "Color 1st Self-Defense (2022-08) Commentary - Haidong Gumdo". For the YouTube title, Self-Defense should have the first letters capitalized and the word Commentary should have the first letter capitalized. If "commentary" does not exist in the file name, then "Commentary" should not be included in the title. The value "1st" in the title should be replaced by whatever is in the associated spot in the file name. "2022" is the year and "08" is the month of the date string "2022-08-13" in the filename.
+
+YouTube description: Use the file name itself as the description, including the korean characters.    
+
+Playlists: This video should first be assigned to the "Color 1st Self-Defense" playlist. The value "1st" in the title should be replaced by whatever is in the associated spot in the file name.  If the filename has the word "commentary" in it, then the video shold also be assinged to the "Commentary" playlist. 
+
+YouTube adult content: Mark the file as for adults, not for kids.
+
+YouTube recorded on date: 2022-08-13. Extract the record on date directly from the file name.
+
+YouTube tags: hard coded as the following list of tag:
+
+haidong gumdo
+해동검도
+korean
+sword
+검
+ssangsu gumbup
+쌍수검법
+gyuk gum
+격검
+paper cutting
+jong-i-pegi
+종이 베기
+apple cutting
+sagwa-pegi
+사과베기
+candle snuffing
+chotbul-kkeugi
+촛불끄기 
+
+Rule #2
+
+This is the second example file name: "Black belt 1st Dan 2nd self-defense form [유단자 1단 두번째 격검] commentary - Haidong Gumdo (2026-04-05 14.15).mp4"
+
+From this second example file name, extract the following information for the YouTube video properties.
+
+YouTube title: "1st Dan 2nd Self-Defense (2026-04) Commentary - Haidong Gumdo". For the YouTube title, Self-Defense should have the first letters capitalized and the word Commentary should have the first letter capitalized. If "commentary" does not exist in the file name, then "Commentary" should not be included in the title. The value "1st Dan" in the title should be replaced by whatever is in the associated spot in the file name. The value "2nd" in the title should be replaced by whatever is in the associated spot in the file name. "2026" is the year and "04" is the month of the date string "2026-04-05" in the filename.
+
+YouTube description: Use the file name itself as the description, including the korean characters.    
+
+Playlists: This video should first be assigned to the "1st Dan 2nd Self-Defense" playlist. The value "1st Dan" in the title should be replaced by whatever is in the associated spot in the file name. The value "2nd" in the title should be replaced by whatever is in the associated spot in the file name. If the filename has the word "commentary" in it, then the video should also be assinged to the "Commentary" playlist. 
+
+YouTube adult content: Mark the file as for adults, not for kids.
+
+YouTube recorded on date: 2026-04-05. Extract the record on date directly from the file name.
+
+YouTube tags: hard coded as the following list of tag:
+
+haidong gumdo
+해동검도
+korean
+sword
+검
+ssangsu gumbup
+쌍수검법
+gyuk gum
+격검
+paper cutting
+jong-i-pegi
+종이 베기
+apple cutting
+sagwa-pegi
+사과베기
+candle snuffing
+chotbul-kkeugi
+촛불끄기 
+
+Rule #3
+
+This is the third example file name: "Personal 1st self-defense form [개인 첫번째 격검] commentary - Haidong Gumdo (2026-07-09 05.27).mp4"
+
+From this third example file name, extract the following information for the YouTube video properties.
+
+YouTube title: "Personal 1st Self-Defense (2026-07) Commentary - Haidong Gumdo". For the YouTube title, Self-Defense should have the first letters capitalized and the word Commentary should have the first letter capitalized. If "commentary" does not exist in the file name, then "Commentary" should not be included in the title. The value "1st" in the title should be replaced by whatever is in the associated spot in the file name. "2026" is the year and "07" is the month of the date string "2026-07-09" in the filename.
+
+YouTube description: Use the file name itself as the description, including the korean characters.    
+
+Playlists: This video should first be assigned to the "Personal 1st Self-Defense" playlist. The value "1st" in the title should be replaced by whatever is in the associated spot in the file name. If the filename has the word "commentary" in it, then the video should also be assinged to the "Commentary" playlist. 
+
+YouTube adult content: Mark the file as for adults, not for kids.
+
+YouTube recorded on date: 2026-07-09. Extract the record on date directly from the file name.
+
+YouTube tags: hard coded as the following list of tag:
+
+haidong gumdo
+해동검도
+korean
+sword
+검
+ssangsu gumbup
+쌍수검법
+gyuk gum
+격검
+paper cutting
+jong-i-pegi
+종이 베기
+apple cutting
+sagwa-pegi
+사과베기
+candle snuffing
+chotbul-kkeugi
+촛불끄기 
+
+Rule #4
+
+This is the fourth example file name: "Two-handed sword form #11 [쌍수검법 11번] commentary - Haidong Gumdo (2025-11-25 05.18).mp4"
+
+From this fourth example file name, extract the following information for the YouTube video properties.
+
+YouTube title: "Two-Handed #11 (2025-11) Commentary - Haidong Gumdo". For the YouTube title, Two-Handed should have the first letters capitalized and the word Commentary should have the first letter capitalized. If "commentary" does not exist in the file name, then "Commentary" should not be included in the title. The value "#11" in the title should be replaced by whatever is in the associated spot in the file name. "2025" is the year and "11" is the month of the date string "2025-11-25" in the filename.
+
+YouTube description: Use the file name itself as the description, including the korean characters.    
+
+Playlists: This video should first be assigned to the "Two-Handed #11 Sword Form" playlist. The value "#11" in the title should be replaced by whatever is in the associated spot in the file name. If the filename has the word "commentary" in it, then the video should also be assinged to the "Commentary" playlist. 
+
+YouTube adult content: Mark the file as for adults, not for kids.
+
+YouTube recorded on date: 2025-11-25. Extract the record on date directly from the file name.
+
+YouTube tags: hard coded as the following list of tag:
+
+haidong gumdo
+해동검도
+korean
+sword
+검
+ssangsu gumbup
+쌍수검법
+gyuk gum
+격검
+paper cutting
+jong-i-pegi
+종이 베기
+apple cutting
+sagwa-pegi
+사과베기
+candle snuffing
+chotbul-kkeugi
+촛불끄기 
+
+
+Rule #5
+
+This is the fifth example file name: "Basic movement [기본동작] - Haidong Gumdo (2023-07-20 06.08).mp4"
+
+From this fifth example file name, extract the following information for the YouTube video properties.
+
+YouTube title: "Basic Movement (2023-07) Commentary - Haidong Gumdo". For the YouTube title, "Basic Movement" should have the first letters capitalized and the word Commentary should have the first letter capitalized. If "commentary" does not exist in the file name, then "Commentary" should not be included in the title. "2023" is the year and "07" is the month of the date string "2023-07-20" in the filename.
+
+YouTube description: Use the file name itself as the description, including the korean characters.    
+
+Playlists: This video should first be assigned to the "Basic Movement" playlist. If the filename has the word "commentary" in it, then the video should also be assinged to the "Commentary" playlist. 
+
+YouTube adult content: Mark the file as for adults, not for kids.
+
+YouTube recorded on date: 2023-07-20. Extract the record on date directly from the file name.
+
+YouTube tags: hard coded as the following list of tag:
+
+haidong gumdo
+해동검도
+korean
+sword
+검
+ssangsu gumbup
+쌍수검법
+gyuk gum
+격검
+paper cutting
+jong-i-pegi
+종이 베기
+apple cutting
+sagwa-pegi
+사과베기
+candle snuffing
+chotbul-kkeugi
+촛불끄기 
+
+
+Rule #6
+
+This is the sixth example file name: "Sword test montage - Haidong Gumdo Red-Blue belt test - Master Lim's Martial Arts, Fairview Heights, IL - Michael (2023-07-12 19.46).mp4"
+
+From this sixth example file name, extract the following information for the YouTube video properties.
+
+YouTube title: "Red-Blue Belt Test (2023-07) - Haidong Gumdo". For the YouTube title, "Red-Blue" may or may not be a hyphenated word. "Belt Test" should have the first letters capitalized. "2023" is the year and "07" is the month of the date string "2023-07-12" in the filename.
+
+YouTube description: Use the file name itself as the description, including any korean characters.    
+
+Playlists: This video should first be assigned to the "Belt Tests" playlist. 
+
+YouTube adult content: Mark the file as for adults, not for kids.
+
+YouTube recorded on date: 2023-07-20. Extract the record on date directly from the file name.
+
+YouTube tags: hard coded as the following list of tag:
+
+haidong gumdo
+해동검도
+korean
+sword
+검
+ssangsu gumbup
+쌍수검법
+gyuk gum
+격검
+paper cutting
+jong-i-pegi
+종이 베기
+apple cutting
+sagwa-pegi
+사과베기
+candle snuffing
+chotbul-kkeugi
+촛불끄기 
+
+Finding the sixth example files will be more difficult. The directory tree will be on a Windows operating system. In that directory tree will be Windows shortcut *.lnk files. The application will need to use the Windows powershell command to read the *.lnk file in order to find the real directory where the files are located.
