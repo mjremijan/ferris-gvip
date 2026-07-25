@@ -18,6 +18,7 @@ public class AppConfig {
         if (Files.exists(p)) {
             try (InputStream is = Files.newInputStream(p)) {
                 cfg.props.load(is);
+                cfg.props.list(System.out);
             }
         }
         return cfg;
@@ -37,5 +38,9 @@ public class AppConfig {
 
     public boolean isDryRun() {
         return Boolean.parseBoolean(props.getProperty("youtube.dryRun", "false"));
+    }
+
+    public String getOauthTokensDir() {
+        return props.getProperty("oauth.tokensDir");
     }
 }

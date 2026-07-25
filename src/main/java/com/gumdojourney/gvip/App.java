@@ -10,14 +10,10 @@ import java.util.Deque;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.stream.Stream;
 
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.DefaultParser;
-import org.apache.commons.cli.HelpFormatter;
-import org.apache.commons.cli.Options;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,18 +26,14 @@ import com.gumdojourney.gvip.state.StateStore;
 public class App {
     private static final Logger LOG = LoggerFactory.getLogger(App.class);
 
-    public static void main(String[] args) throws Exception {
-        Options options = new Options();
-        options.addOption("d", "dir", true, "Root directory to scan (overrides properties)");
+    private static Scanner scanner = new Scanner(System.in);
 
-        CommandLineParser parser = new DefaultParser();
-        CommandLine cmd = parser.parse(options, args);
+    public static void main(String[] args) throws Exception {
 
         AppConfig config = AppConfig.load();
-        String root = cmd.hasOption("dir") ? cmd.getOptionValue("dir") : config.getVideoRootDirectory();
+        String root = config.getVideoRootDirectory();
         if (root == null || root.trim().isEmpty()) {
-            HelpFormatter hf = new HelpFormatter();
-            hf.printHelp("gvip", options);
+            System.out.println("Error: video.rootDirectory property is not set in config/gvip.properties");
             System.exit(1);
         }
 
@@ -118,6 +110,17 @@ public class App {
 
             if (config.isDryRun()) {
                 //System.out.println("DRY_RUN_SKIP=file='" + filename + "'");
+                return;
+            }
+
+            System.out.printf("%s\n", md.getSourceFilename());
+            System.out.print("-> Upload to YouTube (y/n/exit)? ");
+            String userInput = scanner.nextLine().trim().toLowerCase();
+            if (userInput.equals("exit")) {
+                System.exit(0);
+            }
+            if (!userInput.equals("y") && !userInput.equals("yes")) {
+                LOG.info("Skipping upload for {}", filename);
                 return;
             }
 

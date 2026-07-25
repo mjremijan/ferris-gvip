@@ -1,42 +1,47 @@
 package com.gumdojourney.gvip.youtube;
 
-import com.gumdojourney.gvip.model.Metadata;
-import com.gumdojourney.gvip.config.AppConfig;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.file.Path;
+import java.security.GeneralSecurityException;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
-import com.google.api.client.http.FileContent;
 import com.google.api.client.http.GenericUrl;
+import com.google.api.client.http.HttpContent;
 import com.google.api.client.http.HttpRequest;
 import com.google.api.client.http.HttpRequestFactory;
 import com.google.api.client.http.HttpResponse;
 import com.google.api.client.http.InputStreamContent;
 import com.google.api.client.http.javanet.NetHttpTransport;
-import com.google.api.client.http.HttpContent;
 import com.google.api.client.http.json.JsonHttpContent;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.file.Path;
-import java.security.GeneralSecurityException;
-import java.time.ZoneOffset;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.google.api.client.util.store.FileDataStoreFactory;
+import com.gumdojourney.gvip.config.AppConfig;
+import com.gumdojourney.gvip.model.Metadata;
 
 public class YouTubeClientImpl implements YouTubeClient {
     private static final Logger LOG = LoggerFactory.getLogger(YouTubeClientImpl.class);
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
-    private static final List<String> SCOPES = Collections.singletonList("https://www.googleapis.com/auth/youtube.upload");
+    private static final List<String> SCOPES 
+        = Arrays.asList(
+              "https://www.googleapis.com/auth/youtube.upload"
+            , "https://www.googleapis.com/auth/youtube"
+        );
 
     private final NetHttpTransport transport;
     private final HttpRequestFactory requestFactory;
@@ -55,10 +60,14 @@ public class YouTubeClientImpl implements YouTubeClient {
             clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(fis));
         }
 
+        FileDataStoreFactory dataStoreFactory =
+            new FileDataStoreFactory(new File(cfg.getOauthTokensDir()));
+
         GoogleAuthorizationCodeFlow flow;
         try {
             flow = new GoogleAuthorizationCodeFlow.Builder(
                     transport, JSON_FACTORY, clientSecrets, SCOPES)
+                    .setDataStoreFactory(dataStoreFactory)
                     .setAccessType("offline")
                     .build();
         } catch (Exception e) {
@@ -76,11 +85,13 @@ public class YouTubeClientImpl implements YouTubeClient {
         Map<String, Object> snippet = new HashMap<>();
         snippet.put("title", metadata.getTitle());
         snippet.put("description", metadata.getDescription());
+        snippet.put("categoryId", "17"); // Sports category
         if (metadata.getTags() != null) snippet.put("tags", metadata.getTags());
         meta.put("snippet", snippet);
 
         Map<String, Object> status = new HashMap<>();
-        status.put("privacyStatus", "private");
+        status.put("privacyStatus", "public");
+        status.put("selfDeclaredMadeForKids", metadata.isMadeForKids());
         meta.put("status", status);
 
         if (metadata.getRecordingDate() != null) {
@@ -130,7 +141,8 @@ public class YouTubeClientImpl implements YouTubeClient {
                         LOG.warn("Playlist '{}' not found for user; skipping assignment.", pname);
                     }
                 } catch (IOException e) {
-                    LOG.warn("Failed to assign playlist '{}' for video {}: {}", pname, videoId, e.getMessage());
+                    LOG.warn("Failed to assign playlist '{}' for video {}", pname, videoId);
+                    e.printStackTrace();
                 }
             }
         }

@@ -24,5 +24,3 @@ Google YouTube integration setup
 1. Create OAuth 2.0 client credentials in Google Cloud Console (type: Desktop / Installed application) and download `client_secrets.json`.
 2. Place the file at `config/client_secrets.json` or update `config/gvip.properties` `youtube.credentialsFile` to point to it.
 3. On first run, the app will open a browser to authorize the account and store tokens in `config/tokens`.
-
-Note: The current implementation uploads videos as `private` by default. Update `YouTubeClientImpl` if you want a different default privacy.
