@@ -440,6 +440,13 @@ The recording date is extracted from the `YYYY-MM-DD` portion of the filename.
 
 The title uses the year and month in `YYYY-MM` format.
 
+#### Language
+
+For every video, set the "Title and description language" as English (United States) **en-US**.
+
+For every video, set the "Video language" as English (United States) **en-US**.
+
+
 ### 8.2 Filename Format 1: Color Belt Self-Defense Form
 
 #### Example

@@ -86,7 +86,9 @@ public class YouTubeClientImpl implements YouTubeClient {
         snippet.put("title", metadata.getTitle());
         snippet.put("description", metadata.getDescription());
         snippet.put("categoryId", "17"); // Sports category
-        snippet.put("defaultLanguage", "en-US"); // English (United States)
+        snippet.put("defaultLanguage", "en-US");      // Title and description language as English (United States)
+        snippet.put("defaultAudioLanguage", "en-US"); // Video language as English (United States)
+
         if (metadata.getTags() != null) snippet.put("tags", metadata.getTags());
         meta.put("snippet", snippet);
 

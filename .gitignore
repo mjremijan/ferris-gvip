@@ -1,4 +1,4 @@
 target/
-client_secrets.json
+config/client_secrets.json
 data/upload-state.json
 data/tokens/StoredCredential

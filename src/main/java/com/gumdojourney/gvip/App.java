@@ -119,7 +119,9 @@ public class App {
             if (userInput.equals("exit")) {
                 System.exit(0);
             }
-            if (!userInput.equals("y") && !userInput.equals("yes")) {
+            if (userInput.equals("y") || userInput.equals("yes")) {
+                LOG.info("Working...."); 
+            } else {
                 LOG.info("Skipping upload for {}", filename);
                 return;
             }
