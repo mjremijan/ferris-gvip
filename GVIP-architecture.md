@@ -62,50 +62,24 @@ The primary stakeholder is the application owner who will serve all roles and wi
 
 ## 2\. Constraints
 
-### 2.1 Technology Constraints
+### 2.1 Software Development Constraints
 
-* The application will be implemented in Java.
-* Maven will be used for dependency management, building, testing, and packaging.
+REFERENCE&nbsp;&nbsp;&nbsp;Enterprise Architecture Office, Software Development Policy.
 
-### 2.2 Interface Constraints
+* _Java_: The application will be implemented in Java.
+* _Maven_: Dependency management, building, testing, and packaging will be handled by Apache Maven.
 
-* GVIP will provide a command-line interface.
-* No graphical user interface is required.
 
-### 2.3 Operating System Constraints
+### 2.5 Software Security Constraints
 
-* GVIP will run on Windows.
-* Windows PowerShell will be used to inspect `.lnk` files and resolve their target directories.
+REFERENCE&nbsp;&nbsp;&nbsp;Enterprise Architecture Office, Software Security Policy.
 
-### 2.4 Data Storage Constraints
+* API Authentication configuration must be 
+  * encrypted
+  * not hard-coded in code
+  * not stored in source control
+  * not written to logs
 
-* Upload state will be stored in a simple local data file.
-* YAML must not be used.
-* The final format may be JSON, CSV, or another suitable non-YAML format.
-
-### 2.5 Security Constraints
-
-* API credentials and authentication configuration must be read from a properties file.
-* Credentials must not be hard-coded in the Java source code.
-* Credentials files must not be committed to source control.
-* Credentials and access tokens must not be written to normal application logs.
-
-### 2.6 YouTube Integration Constraints
-
-* GVIP will communicate with YouTube through the YouTube API.
-* A suitable third-party Java library may be used.
-* If no suitable library meets the requirements, GVIP will make the API calls directly.
-* YouTube integration should be isolated behind an application interface so that the implementation can be changed later.
-
-### 2.7 Filename Processing Constraints
-
-* Only `.mp4` files are currently supported.
-* The filename is the primary source of video metadata.
-* The complete original filename will be used as the YouTube description.
-* Korean characters in filenames must be preserved.
-* GVIP must recognize the six supported filename formats described in section 8.
-
-\---
 
 ## 3\. Context and Scope
 
@@ -161,6 +135,37 @@ The following are outside the current scope:
 \---
 
 ## 4\. Solution Strategy
+
+### 2.2 Interface Constraints
+
+* GVIP will provide a command-line interface.
+* No graphical user interface is required.
+
+### 2.3 Operating System Constraints
+
+* GVIP will run on Windows.
+* Windows PowerShell will be used to inspect `.lnk` files and resolve their target directories.
+
+### 2.4 Data Storage Constraints
+
+* Upload state will be stored in a simple local data file.
+* YAML must not be used.
+* The final format may be JSON, CSV, or another suitable non-YAML format.
+  
+### 2.6 YouTube Integration Constraints
+
+* GVIP will communicate with YouTube through the YouTube API.
+* A suitable third-party Java library may be used.
+* If no suitable library meets the requirements, GVIP will make the API calls directly.
+* YouTube integration should be isolated behind an application interface so that the implementation can be changed later.
+
+### 2.7 Filename Processing Constraints
+
+* Only `.mp4` files are currently supported.
+* The filename is the primary source of video metadata.
+* The complete original filename will be used as the YouTube description.
+* Korean characters in filenames must be preserved.
+* GVIP must recognize the six supported filename formats described in section 8.
 
 ### 4.1 Overall Approach
 
