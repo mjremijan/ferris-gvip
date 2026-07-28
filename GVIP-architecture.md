@@ -1,20 +1,14 @@
 # GVIP Architecture Documentation
 
-## GVIP (GumdoJourney Video Publisher)
 
-**Status:** Draft
-
-\---
-
-## 1\. Introduction and Goals
-
-### 1.1 Purpose
+## 1 - Introduction and Goals
 
 GVIP (GumdoJourney Video Publisher) is a standalone Java command-line application that runs on a Windows computer.
 
 Its purpose is to manage local video files and automate the publication of new videos to YouTube. GVIP parses each video filename according to one of six supported filename formats and uses the parsed information to construct the YouTube video properties.
 
-### 1.2 System Scope
+
+### 1.1 Requirements overview
 
 GVIP will:
 
@@ -22,32 +16,49 @@ GVIP will:
 * Resolve Windows `.lnk` shortcut files to locate additional directories.
 * Track which video files have already been uploaded.
 * Recognize six supported video filename formats.
-* Extract YouTube video properties from filenames.
-* Generate:
+* Extract YouTube video properties from the file names.
+  
+  * title
+  * description
+  * recording date
+  * audience setting
+  * playlist assignments
+  * video language
+  * title and description language
+  * tags
 
-  * video title,
-  * video description,
-  * recording date,
-  * tags,
-  * audience setting,
-  * playlist assignments.
 * Upload new videos to YouTube.
 * Assign uploaded videos to one or more YouTube playlists.
 
+
+### 1.2 Quality goals
+
+These are the important quality goals. See [ISO 25010](https://iso25000.com/index.php/en/iso-25000-standards/iso-25010) for more details.
+
+**Functional Stability**
+* _Functional completeness_. The different file formats must be processed and uploaded to YouTube once and only once.  
+* _Functional correctness_. The names of the files must be parsed correctly extract all of the YouTube video properties which must be set.
+* _Functional appropriateness_. Users can complete the entire video publishing process (upload, metadata, playlist assignment, and scheduling) without using YouTube Studio.
+
+**Compatibility**
+* _Co-Existence_. Do not abuse the YouTube API; use the API nicely. The automation should not flood (denial of service) the API with requests too quickly. This may possibly causing a lock-out or ban to the channel.
+
+**Security**
+* _Confidentiality_. YouTube API credentials and data storage must be kept secure and local. Do not publish to source control. 
+
+**Maintainability**
+*  _Modularity_. Organize the source code into distinct modules, each with it own distinct responsiblity. All the modules working together will provide the full solution. 
+*  _Modifiability_. The source code must be readable and easy to modify.
+*  _Testability_. The source code must be easy to test, verifying each distinct module is functioning correctly (_functional correctness_).
+
+**Flexibility**
+* _Installability_. The application should be easy to assemble together and execute with little to no additional infrastructure needed...a binary distribution. 
+
+
 ### 1.3 Stakeholders
 
-The primary stakeholder is the application owner and developer, who will use GVIP for personal management and publication of videos on the GumdoJourney YouTube channel.
+The primary stakeholder is the application owner who will serve all roles and will use GVIP for personal management and publication of videos to the GumdoJourney YouTube channel.
 
-### 1.4 Quality Goals
-
-The most important quality goals are:
-
-1. Functional completeness
-2. Functional correctness
-3. Correct filename parsing and metadata extraction
-4. Confidentiality of API credentials
-5. Installability
-6. Maintainability
 
 ### 1.5 Initial Non-Goals
 
