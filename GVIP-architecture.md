@@ -60,20 +60,6 @@ These are the important quality goals. See [ISO 25010](https://iso25000.com/inde
 The primary stakeholder is the application owner who will serve all roles and will use GVIP for personal management and publication of videos to the GumdoJourney YouTube channel.
 
 
-### 1.5 Initial Non-Goals
-
-The initial version will not include:
-
-* a graphical user interface,
-* multi-user support,
-* cloud hosting,
-* support for video platforms other than YouTube,
-* video editing or transcoding,
-* arbitrary filename formats outside the six supported formats,
-* advanced YouTube analytics.
-
-\---
-
 ## 2\. Constraints
 
 ### 2.1 Technology Constraints
