@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
 import org.slf4j.Logger;
@@ -113,18 +115,18 @@ public class App {
                 return;
             }
 
-            System.out.printf("%s\n", md.getSourceFilename());
-            System.out.print("-> Upload to YouTube (y/n/exit)? ");
-            String userInput = scanner.nextLine().trim().toLowerCase();
-            if (userInput.equals("exit")) {
-                System.exit(0);
-            }
-            if (userInput.equals("y") || userInput.equals("yes")) {
-                LOG.info("Working...."); 
-            } else {
-                LOG.info("Skipping upload for {}", filename);
-                return;
-            }
+            // System.out.printf("%s\n", md.getSourceFilename());
+            // System.out.print("-> Upload to YouTube (y/n/exit)? ");
+            // String userInput = scanner.nextLine().trim().toLowerCase();
+            // if (userInput.equals("exit")) {
+            //     System.exit(0);
+            // }
+            // if (userInput.equals("y") || userInput.equals("yes")) {
+            //     LOG.info("Working...."); 
+            // } else {
+            //     LOG.info("Skipping upload for {}", filename);
+            //     return;
+            // }
 
             // create YouTube client and upload (real client if configured, otherwise stub)
             com.gumdojourney.gvip.youtube.YouTubeClient yt = com.gumdojourney.gvip.youtube.YouTubeClientFactory.create(config);
@@ -133,10 +135,23 @@ public class App {
 
             state.markUploaded(p, md);
             LOG.info("Marked as uploaded: {}", filename);
-        } catch (IOException e) {
-            LOG.error("Error processing file {}: {}", filename, e.getMessage(), e);
+            
+            randomSleep();
         } catch (Exception e) {
             LOG.error("Upload error for {}: {}", filename, e.getMessage(), e);
+            throw new RuntimeException(e);
+        } 
+    }
+
+    private static void randomSleep() {
+        // Random number of minutes: 4, 5, 6, 7, or 8
+        long minutes = ThreadLocalRandom.current().nextLong(4, 9);
+
+        System.out.println("Sleeping for " + minutes + " minute(s)...");
+        try {
+            TimeUnit.MINUTES.sleep(minutes);
+        } catch (InterruptedException e) {
+            throw new RuntimeException("Sleep interrupted", e);
         }
     }
 

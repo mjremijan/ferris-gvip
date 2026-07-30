@@ -141,11 +141,10 @@ public class YouTubeClientImpl implements YouTubeClient {
                         HttpRequest plReq = requestFactory.buildPostRequest(playlistItemsUrl, new JsonHttpContent(JSON_FACTORY, item));
                         plReq.execute();
                     } else {
-                        LOG.warn("Playlist '{}' not found for user; skipping assignment.", pname);
+                        throw new RuntimeException("Playlist '%s' not found".formatted(pname));
                     }
                 } catch (IOException e) {
-                    LOG.warn("Failed to assign playlist '{}' for video {}", pname, videoId);
-                    e.printStackTrace();
+                    throw new RuntimeException("Failed to assign playlist '%s' to '%s'".formatted(pname, videoId));
                 }
             }
         }
