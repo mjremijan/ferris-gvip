@@ -62,7 +62,7 @@ The primary stakeholder is the application owner who will serve all roles and wi
 
 ## 2\. Constraints
 
-### 2.1 Software Development Constraints
+### 2.1 Software Development Policy
 
 REFERENCE&nbsp;&nbsp;&nbsp;Enterprise Architecture Office, Software Development Policy.
 
@@ -70,7 +70,7 @@ REFERENCE&nbsp;&nbsp;&nbsp;Enterprise Architecture Office, Software Development 
 * _Maven_: Dependency management, building, testing, and packaging will be handled by Apache Maven.
 
 
-### 2.5 Software Security Constraints
+### 2.5 Software Security Policy
 
 REFERENCE&nbsp;&nbsp;&nbsp;Enterprise Architecture Office, Software Security Policy.
 
