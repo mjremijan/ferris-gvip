@@ -48,6 +48,8 @@ public class App {
         WindowsShortcutResolver resolver = new WindowsShortcutResolver();
 
         List<Path> files = discoverMp4Files(Paths.get(root), resolver);
+        
+        
         LOG.info("Discovered {} video file(s) under {}", files.size(), root);
         for (Path p : files) {
             System.out.println("----------------------------------------");
