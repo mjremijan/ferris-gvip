@@ -64,7 +64,7 @@ The primary stakeholder is the application owner who will serve all roles and wi
 
 ### 2.1 Software Development Policy
 
-REFERENCE&nbsp;&nbsp;&nbsp;Enterprise Architecture Office, Software Development Policy.
+REFERENCE&nbsp;&nbsp;&nbsp;Enterprise Architecture Office, _Software Development Policy_
 
 * _Java_: The application will be implemented in Java.
 * _Maven_: Dependency management, building, testing, and packaging will be handled by Apache Maven.
