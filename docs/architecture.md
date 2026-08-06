@@ -83,56 +83,19 @@ REFERENCE&nbsp;&nbsp;&nbsp;Enterprise Architecture Office, Software Security Pol
 
 ## 3\. Context
 
-### 3.1 System Context
+### 3.1 Business context
 
-GVIP interacts with:
+![Business context](diagrams/business-context.jpg)
 
-* **User**  
-Runs the CLI application and reviews processing results.
-* **Windows filesystem**  
-Contains video files, directories, and shortcut files.
-* **Windows PowerShell**  
-Resolves `.lnk` files to target directories.
-* **Properties file**  
-Contains application configuration and API credentials.
-* **Upload state file**  
-Records files that have already been uploaded.
-* **YouTube API**  
-Receives uploaded videos and their metadata.
 
-### 3.2 In Scope
+| Partner Organization | Partner System | Data Shared | Data Format | Interface Direction | Transfer Direction | Execution Mode | Implementation |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| Google | YouTube | Video binary with its metadata | JSON, <br /> Binary | Outbound | Push | On-demand | Google Java Client API |
 
-The initial version includes:
 
-* Directory traversal.
-* Windows shortcut resolution.
-* Discovery of `.mp4` files.
-* Recognition of six filename formats.
-* Filename parsing.
-* YouTube title generation.
-* YouTube description generation.
-* Recording-date extraction.
-* Tag assignment.
-* Audience assignment.
-* Playlist assignment.
-* Duplicate-upload prevention.
-* YouTube video uploads.
-* CLI status reporting.
+### 3.2 Technical context
+![Technical context](diagrams/technical-context.jpg)
 
-### 3.3 Out of Scope
-
-The following are outside the current scope:
-
-* GUI support.
-* Multi-user account management.
-* Cloud deployment.
-* Non-YouTube publishing.
-* Video editing.
-* Video transcoding.
-* Support for arbitrary filename formats.
-* Automatic creation of missing YouTube playlists, unless added later.
-
-\---
 
 ## 4\. Solution Strategy
 

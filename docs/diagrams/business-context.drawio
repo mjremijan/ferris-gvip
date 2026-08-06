@@ -1,0 +1,76 @@
+<mxfile host="Electron">
+  <diagram name="System Context" id="xBJs_DBi-d3a8O7QSZIT">
+    <mxGraphModel dx="922" dy="720" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" style="locked=1;" value="Generated" visible="0" />
+        <mxCell id="gZDisR2Oj47-mEyLcAFN-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;User&lt;/b&gt;&lt;br/&gt;Runs the CLI application&lt;br/&gt;and reviews processing results." vertex="1">
+          <mxGeometry height="90" width="180" x="40" y="345" as="geometry" />
+        </mxCell>
+        <mxCell id="gZDisR2Oj47-mEyLcAFN-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;" value="GumdoJourney Video Publisher (GVIP)&lt;br&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;Processes videos and uploads&lt;br&gt;them to YouTube.&lt;/span&gt;" vertex="1">
+          <mxGeometry height="140" width="260" x="340" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="gZDisR2Oj47-mEyLcAFN-3" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;b&gt;&lt;br&gt;&lt;br&gt;Windows Filesystem&lt;/b&gt;&lt;br&gt;Contains video files,&lt;br&gt;directories, and .lnk files." vertex="1">
+          <mxGeometry height="90" width="220" x="820" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="gZDisR2Oj47-mEyLcAFN-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="&lt;b&gt;Windows PowerShell&lt;/b&gt;&lt;br/&gt;Resolves .lnk files&lt;br/&gt;to target directories." vertex="1">
+          <mxGeometry height="90" width="220" x="820" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="gZDisR2Oj47-mEyLcAFN-5" parent="1" style="shape=document;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="&lt;b&gt;Properties File&lt;/b&gt;&lt;br/&gt;Application configuration&lt;br/&gt;and API credentials." vertex="1">
+          <mxGeometry height="90" width="220" x="820" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="gZDisR2Oj47-mEyLcAFN-6" parent="1" style="shape=document;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="&lt;b&gt;Upload State File&lt;/b&gt;&lt;br/&gt;Records files already&lt;br/&gt;uploaded." vertex="1">
+          <mxGeometry height="90" width="220" x="820" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="gZDisR2Oj47-mEyLcAFN-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="&lt;b&gt;YouTube API&lt;/b&gt;&lt;br/&gt;Receives uploaded videos&lt;br/&gt;and metadata." vertex="1">
+          <mxGeometry height="90" width="220" x="820" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="gZDisR2Oj47-mEyLcAFN-8" edge="1" parent="1" source="gZDisR2Oj47-mEyLcAFN-1" style="endArrow=block;html=1;" target="gZDisR2Oj47-mEyLcAFN-2" value="Runs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gZDisR2Oj47-mEyLcAFN-9" edge="1" parent="1" source="gZDisR2Oj47-mEyLcAFN-2" style="endArrow=block;html=1;" target="gZDisR2Oj47-mEyLcAFN-3" value="Reads video files">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gZDisR2Oj47-mEyLcAFN-10" edge="1" parent="1" source="gZDisR2Oj47-mEyLcAFN-2" style="endArrow=block;html=1;" target="gZDisR2Oj47-mEyLcAFN-4" value="Resolves shortcuts">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gZDisR2Oj47-mEyLcAFN-11" edge="1" parent="1" source="gZDisR2Oj47-mEyLcAFN-2" style="endArrow=block;html=1;" target="gZDisR2Oj47-mEyLcAFN-5" value="Reads configuration">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gZDisR2Oj47-mEyLcAFN-12" edge="1" parent="1" source="gZDisR2Oj47-mEyLcAFN-2" style="endArrow=block;html=1;" target="gZDisR2Oj47-mEyLcAFN-6" value="Reads/Writes upload state">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gZDisR2Oj47-mEyLcAFN-13" edge="1" parent="1" source="gZDisR2Oj47-mEyLcAFN-2" style="endArrow=block;html=1;" target="gZDisR2Oj47-mEyLcAFN-7" value="Uploads videos and metadata">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gZDisR2Oj47-mEyLcAFN-14" parent="1" style="shape=document;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="&lt;b&gt;YoutTube API&lt;/b&gt;&lt;div&gt;Token files.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="90" width="220" x="820" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="gZDisR2Oj47-mEyLcAFN-15" edge="1" parent="1" source="gZDisR2Oj47-mEyLcAFN-2" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=-0.018;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="gZDisR2Oj47-mEyLcAFN-14" value="Reads/Writes API token">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nl3QyDNHL7td88rj6ka--1" parent="0" value="v1" />
+        <mxCell id="UDspbQebS2TcU1q8_lvM-4" edge="1" parent="nl3QyDNHL7td88rj6ka--1" source="UDspbQebS2TcU1q8_lvM-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="UDspbQebS2TcU1q8_lvM-2" value="Google Java Client API">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UDspbQebS2TcU1q8_lvM-1" parent="nl3QyDNHL7td88rj6ka--1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1061B0;" value="&lt;b&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;GVIP&lt;/font&gt;&lt;/b&gt;&lt;div&gt;&lt;font style=&quot;font-size: 10px; color: rgb(255, 255, 255);&quot;&gt;[System Platform]&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 10px; color: rgb(255, 255, 255);&quot;&gt;GumdoJourney Video Publisher&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="140" x="90" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="UDspbQebS2TcU1q8_lvM-2" parent="nl3QyDNHL7td88rj6ka--1" style="html=1;dropTarget=0;whiteSpace=wrap;fillColor=#E6E6E6;" value="&lt;font&gt;«&lt;/font&gt;external»&lt;br&gt;&lt;div&gt;&lt;b&gt;YouTube&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;[API]&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="140" x="90" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="UDspbQebS2TcU1q8_lvM-3" parent="UDspbQebS2TcU1q8_lvM-2" style="shape=module;jettyWidth=8;jettyHeight=4;" value="" vertex="1">
+          <mxGeometry height="20" relative="1" width="20" x="1" as="geometry">
+            <mxPoint x="-27" y="7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UDspbQebS2TcU1q8_lvM-6" edge="1" parent="nl3QyDNHL7td88rj6ka--1" source="UDspbQebS2TcU1q8_lvM-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="UDspbQebS2TcU1q8_lvM-1" value="Java CLI">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UDspbQebS2TcU1q8_lvM-5" parent="nl3QyDNHL7td88rj6ka--1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#1061B0;strokeColor=none;shape=mxgraph.alibaba_cloud.user;verticalAlign=bottom;" value="" vertex="1">
+          <mxGeometry height="40" width="40" x="140" y="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
