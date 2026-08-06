@@ -100,9 +100,9 @@ REFERENCE&nbsp;&nbsp;&nbsp;Enterprise Architecture Office, Software Security Pol
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | Web browser | 192.168.1.5 | Router | 192.168.1.1 | 443 | HTTPS |
 | GVIP | 192.168.1.5 | Router | 192.168.1.1 | 443 | HTTPS |
-| Router | 192.168.1.1 | Modem | Layer 2 forwarding | 443 | HTTPS |
-| Modem | 71.10.191.124 | YouTube website | 443 | HTTPS |
-| Modem | 71.10.191.124 | YouTube API | 443 | HTTPS |
+| Router | 192.168.1.1 | Modem | Layer 2 forwarding | --- | --- |
+| Modem | 71.10.191.124 | accounts.google.com | 443 | HTTPS |
+| Modem | 71.10.191.124 | www.googleapis.com | 443 | HTTPS |
 
 
 ## 4\. Solution Strategy

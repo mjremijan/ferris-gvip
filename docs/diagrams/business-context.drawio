@@ -1,6 +1,6 @@
 <mxfile host="Electron">
   <diagram name="System Context" id="xBJs_DBi-d3a8O7QSZIT">
-    <mxGraphModel dx="922" dy="720" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="645" dy="441" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" style="locked=1;" value="Generated" visible="0" />
@@ -50,25 +50,40 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="nl3QyDNHL7td88rj6ka--1" parent="0" value="v1" />
-        <mxCell id="UDspbQebS2TcU1q8_lvM-4" edge="1" parent="nl3QyDNHL7td88rj6ka--1" source="UDspbQebS2TcU1q8_lvM-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="UDspbQebS2TcU1q8_lvM-2" value="Google Java Client API">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="UDspbQebS2TcU1q8_lvM-4" edge="1" parent="nl3QyDNHL7td88rj6ka--1" source="UDspbQebS2TcU1q8_lvM-1" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="UDspbQebS2TcU1q8_lvM-2" value="Google Java Client API">
+          <mxGeometry relative="1" x="-0.6471" y="130" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9X6ZUvzTrymze2k2hHJZ-3" edge="1" parent="nl3QyDNHL7td88rj6ka--1" source="UDspbQebS2TcU1q8_lvM-1" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="9X6ZUvzTrymze2k2hHJZ-1" value="Google Java Client API">
+          <mxGeometry relative="1" x="-0.5" y="-28" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="UDspbQebS2TcU1q8_lvM-1" parent="nl3QyDNHL7td88rj6ka--1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1061B0;" value="&lt;b&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;GVIP&lt;/font&gt;&lt;/b&gt;&lt;div&gt;&lt;font style=&quot;font-size: 10px; color: rgb(255, 255, 255);&quot;&gt;[System Platform]&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 10px; color: rgb(255, 255, 255);&quot;&gt;GumdoJourney Video Publisher&lt;/font&gt;&lt;/div&gt;" vertex="1">
-          <mxGeometry height="80" width="140" x="90" y="130" as="geometry" />
+          <mxGeometry height="80" width="140" x="160" y="120" as="geometry" />
         </mxCell>
         <mxCell id="UDspbQebS2TcU1q8_lvM-2" parent="nl3QyDNHL7td88rj6ka--1" style="html=1;dropTarget=0;whiteSpace=wrap;fillColor=#E6E6E6;" value="&lt;font&gt;«&lt;/font&gt;external»&lt;br&gt;&lt;div&gt;&lt;b&gt;YouTube&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;[API]&lt;/span&gt;&lt;/div&gt;" vertex="1">
-          <mxGeometry height="80" width="140" x="90" y="280" as="geometry" />
+          <mxGeometry height="80" width="140" x="80" y="280" as="geometry" />
         </mxCell>
         <mxCell id="UDspbQebS2TcU1q8_lvM-3" parent="UDspbQebS2TcU1q8_lvM-2" style="shape=module;jettyWidth=8;jettyHeight=4;" value="" vertex="1">
           <mxGeometry height="20" relative="1" width="20" x="1" as="geometry">
             <mxPoint x="-27" y="7" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="UDspbQebS2TcU1q8_lvM-6" edge="1" parent="nl3QyDNHL7td88rj6ka--1" source="UDspbQebS2TcU1q8_lvM-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="UDspbQebS2TcU1q8_lvM-1" value="Java CLI">
+        <mxCell id="UDspbQebS2TcU1q8_lvM-6" edge="1" parent="nl3QyDNHL7td88rj6ka--1" source="UDspbQebS2TcU1q8_lvM-5" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="UDspbQebS2TcU1q8_lvM-1" value="Java CLI">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="UDspbQebS2TcU1q8_lvM-5" parent="nl3QyDNHL7td88rj6ka--1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#1061B0;strokeColor=none;shape=mxgraph.alibaba_cloud.user;verticalAlign=bottom;" value="" vertex="1">
-          <mxGeometry height="40" width="40" x="140" y="40" as="geometry" />
+          <mxGeometry height="40" width="40" x="210" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="9X6ZUvzTrymze2k2hHJZ-1" parent="nl3QyDNHL7td88rj6ka--1" style="html=1;dropTarget=0;whiteSpace=wrap;fillColor=#E6E6E6;" value="&lt;font&gt;«&lt;/font&gt;external»&lt;br&gt;&lt;div&gt;&lt;b&gt;YouTube&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;[Accounts]&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="140" x="240" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="9X6ZUvzTrymze2k2hHJZ-2" parent="9X6ZUvzTrymze2k2hHJZ-1" style="shape=module;jettyWidth=8;jettyHeight=4;" value="" vertex="1">
+          <mxGeometry height="20" relative="1" width="20" x="1" as="geometry">
+            <mxPoint x="-27" y="7" as="offset" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
