@@ -1,7 +1,7 @@
 # GVIP Architecture Documentation
 
 
-## 1 - Introduction and Goals
+## 1 - Introduction and goals
 
 GVIP (GumdoJourney Video Publisher) is a standalone Java command-line application that runs on a Windows computer.
 
@@ -68,7 +68,7 @@ These are all persons and organizations having a stake in GVIP's architecture.
 
 Constraints are decisions, standards, regulations, or conditions that are outside the control of the team and therefore cannot be changed by the architecture. The system's architecture must operate within the boundaries defined by these constraints.
 
-### 2.1 Software Development Policy
+### 2.1 Software development policy
 
 REFERENCE&nbsp;&nbsp;&nbsp;Enterprise Architecture Office, _Software Development Policy_
 
@@ -76,7 +76,7 @@ REFERENCE&nbsp;&nbsp;&nbsp;Enterprise Architecture Office, _Software Development
 * _Maven_: Dependency management, building, testing, and packaging will be handled by Apache Maven.
 
 
-### 2.2 Software Security Policy
+### 2.2 Software security policy
 
 REFERENCE&nbsp;&nbsp;&nbsp;Enterprise Architecture Office, _Software Security Policy_
 
@@ -117,7 +117,7 @@ The technical context describes the system from a technical perspective by ident
 | Modem | 71.10.191.124 | Google | www.googleapis.com | 443 | HTTPS |
 
 
-## 4\. Solution Strategy
+## 4\. Solution strategy
 
 ### 2.2 Interface Constraints
 
