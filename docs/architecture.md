@@ -57,10 +57,16 @@ These are the important quality goals. See [ISO 25010](https://iso25000.com/inde
 
 ### 1.3 Stakeholders
 
-The primary stakeholder is the application owner who will serve all roles and will use GVIP for personal management and publication of videos to the GumdoJourney YouTube channel.
+These are all persons and organizations having a stake in GVIP's architecture.
+
+|Stakeholder|Contact|Role|Comments|
+|---|---|---|---|
+|Michael Remijan|mjremijan@yahoo.com|All|Michael is the application owner. He serves all roles. He uses GVIP for personal management and publication of videos to the GumdoJourney YouTube channel.|
 
 
 ## 2\. Constraints
+
+Constraints are decisions, standards, regulations, or conditions that are outside the control of the team and therefore cannot be changed by the architecture. The system's architecture must operate within the boundaries defined by these constraints.
 
 ### 2.1 Software Development Policy
 
@@ -70,11 +76,11 @@ REFERENCE&nbsp;&nbsp;&nbsp;Enterprise Architecture Office, _Software Development
 * _Maven_: Dependency management, building, testing, and packaging will be handled by Apache Maven.
 
 
-### 2.5 Software Security Policy
+### 2.2 Software Security Policy
 
-REFERENCE&nbsp;&nbsp;&nbsp;Enterprise Architecture Office, Software Security Policy.
+REFERENCE&nbsp;&nbsp;&nbsp;Enterprise Architecture Office, _Software Security Policy_
 
-* API Authentication configuration must be 
+* API Authentication configuration must be:
   * encrypted
   * not hard-coded in code
   * not stored in source control
@@ -85,6 +91,8 @@ REFERENCE&nbsp;&nbsp;&nbsp;Enterprise Architecture Office, Software Security Pol
 
 ### 3.1 Business context
 
+The business context describes the system from a business perspective by identifying all relevant **users and communication partners** that interact with the system. Focus on what interactions occur and why they occur.
+
 ![Business context](diagrams/business-context.jpg)
 
 
@@ -94,6 +102,9 @@ REFERENCE&nbsp;&nbsp;&nbsp;Enterprise Architecture Office, Software Security Pol
 
 
 ### 3.2 Technical context
+
+The technical context describes the system from a technical perspective by identifying **how** all relevant users and communication partners interact with the system. **Focus on the technical communication channels**: network components, ports, protocols, networks/vpns, and other connectivity details.
+
 ![Technical context](diagrams/technical-context.jpg)
 
 | Source |  | Target |  |  |  |
