@@ -19,6 +19,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.gumdojourney.gvip.config.AppConfig;
+import com.gumdojourney.gvip.ignore.IgnoreStore;
 import com.gumdojourney.gvip.model.Metadata;
 import com.gumdojourney.gvip.parser.ParserManager;
 import com.gumdojourney.gvip.shortcut.WindowsShortcutResolver;
@@ -44,6 +45,7 @@ public class App {
 
         ParserManager pm = new ParserManager();
         StateStore state = new StateStore(config.getStateFilePath(), config.isDryRun());
+        IgnoreStore ignore = new IgnoreStore(config.getIgnoreFilePath());
         WindowsShortcutResolver resolver = new WindowsShortcutResolver();
 
         List<Path> files = discoverMp4Files(Paths.get(root), resolver);
@@ -53,7 +55,7 @@ public class App {
         for (Path p : files) {
             LOG.info("----------------------------------------");            
             LOG.info("FOUND_VIDEO: {}", p);
-            processFile(p, pm, state, config);
+            processFile(p, pm, ignore, state, config);
         }
         LOG.info("GVIP run complete");
     }
@@ -95,21 +97,36 @@ public class App {
         return result;
     }
 
-    private static void processFile(Path p, ParserManager pm, StateStore state, AppConfig config) {
+    private static void processFile(Path p, ParserManager pm, IgnoreStore ignore, StateStore state, AppConfig config) {
         String filename = p.getFileName().toString();
         try {
+            if (ignore.isIgnored(p)) {
+                LOG.info(" | IGNORING");
+                return;
+            }
+
             if (state.isUploaded(p)) {
-                LOG.info(" | IS UPLOADED");
+                LOG.info(" | IS_UPLOADED");
                 return;
             }
 
             Metadata md = pm.parseFilename(p).orElse(null);
-            if (md == null) {
-                LOG.info(" | SKIPPING");
-                return;
-            }
+            {
+                if (md == null) {
+                    LOG.info(" | SKIPPING - parsing file name failed");
+                    return;
+                }
 
-            logMetadataSummary(filename, md);
+                LOG.info(" | TO_UPLOAD");  
+                LOG.info(" | - filename='{}'", filename); 
+                LOG.info(" | - title='{}'", md.getTitle()); 
+                LOG.info(" | - description='{}'", md.getDescription()); 
+                LOG.info(" | - recordingDate='{}'", md.getRecordingDate()); 
+                LOG.info(" | - playlists='{}'", md.getPlaylists()); 
+                LOG.info(" | - tags='{}'", md.getTags()); 
+                LOG.info(" | - madeForKids='{}'", md.isMadeForKids()); 
+                LOG.info(" | - sourceFilename='{}'", md.getSourceFilename()); 
+            }
 
             if (config.isDryRun()) {                
                 return;
@@ -154,17 +171,5 @@ public class App {
             throw new RuntimeException("Sleep interrupted", e);
         }
     }
-
-    private static void logMetadataSummary(String filename, Metadata md) {
-        LOG.info(" | TO_UPLOAD");  
-        LOG.info(" | - filename='{}'", filename); 
-        LOG.info(" | - title='{}'", md.getTitle()); 
-        LOG.info(" | - description='{}'", md.getDescription()); 
-        LOG.info(" | - recordingDate='{}'", md.getRecordingDate()); 
-        LOG.info(" | - playlists='{}'", md.getPlaylists()); 
-        LOG.info(" | - tags='{}'", md.getTags()); 
-        LOG.info(" | - madeForKids='{}'", md.isMadeForKids()); 
-        LOG.info(" | - sourceFilename='{}'", md.getSourceFilename()); 
-        LOG.info("");        
-    }
+   
 }

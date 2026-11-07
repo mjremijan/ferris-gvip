@@ -43,4 +43,8 @@ public class AppConfig {
     public String getOauthTokensDir() {
         return props.getProperty("oauth.tokensDir");
     }
+
+     public String getIgnoreFilePath() {
+        return props.getProperty("ignore.file", "data/ignore.txt");
+    }
 }

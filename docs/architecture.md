@@ -15,7 +15,8 @@ GVIP will:
 * Traverse configured directories looking for `.mp4` files.
 * Resolve Windows `.lnk` shortcut files to locate additional directories.
 * Track which video files have already been uploaded.
-* Recognize six supported video filename formats.
+* Ignore `.mp4` files if the file name matches any entires in an `ingore` file.
+* Recognize seven supported video filename formats.
 * Extract YouTube video properties from the file names.
   
   * title
@@ -145,6 +146,7 @@ The technical context describes the system from a technical perspective by ident
 ### 2.7 Filename Processing Constraints
 
 * Only `.mp4` files are currently supported.
+* An `ingore` file exists containing a list of regular expressions. Any `.mp4` file name which matches an expression must not be uploaded.
 * The filename is the primary source of video metadata.
 * The complete original filename will be used as the YouTube description.
 * Korean characters in filenames must be preserved.
@@ -160,14 +162,15 @@ The primary workflow is:
 2. Traverse configured directories.
 3. Resolve Windows shortcut files.
 4. Locate `.mp4` files.
-5. Skip files already recorded as uploaded.
-6. Detect the filename format.
-7. Parse the filename into structured metadata.
-8. Construct the YouTube upload properties.
-9. Upload the video.
-10. Assign the video to the appropriate playlists.
-11. Record the successful upload.
-12. Report the result to the user.
+5. Skip files which match a regex in the `ignore` file.
+6. Skip files already recorded as uploaded.
+7. Detect the filename format.
+8. Parse the filename into structured metadata.
+9. Construct the YouTube upload properties.
+10. Upload the video.
+11. Assign the video to the appropriate playlists.
+12. Record the successful upload.
+13. Report the result to the user.
 
 ### 4.2 Architectural Style
 
@@ -202,7 +205,7 @@ Each supported filename format will have a corresponding parser rule. The parser
 
 The metadata builder will convert this object into the properties required by the YouTube API.
 
-\---
+
 
 ## 5\. Building Block View
 
@@ -226,6 +229,10 @@ Traverses configured directories and identifies:
 #### Windows Shortcut Resolver
 
 Uses PowerShell to obtain the target directory of a `.lnk` file.
+
+#### Ignore Filename store
+
+Reads a local ignore file. Each line is a regular expression which may match an `.mp4` file name. If matched to any of the regular expressions in the ingore file, the file must not be uploaded.
 
 #### Upload State Store
 
@@ -267,15 +274,16 @@ Coordinates the complete processing workflow.
 2. The Configuration Component loads configuration and credentials.
 3. The File Discovery Component finds `.mp4` and `.lnk` files.
 4. The Windows Shortcut Resolver resolves `.lnk` targets.
-5. The Upload State Store identifies previously uploaded files.
-6. The Filename Format Detector identifies the format of each new file.
-7. The Filename Parser extracts structured metadata.
-8. The Playlist Resolver determines playlist assignments.
-9. The Metadata Builder creates the YouTube metadata.
-10. The YouTube Integration Component uploads the video.
-11. The YouTube Integration Component assigns playlists.
-12. The Upload State Store records the successful upload.
-13. The CLI displays the processing result.
+5. The Ingore Filename Store identifies files to ignore and not upload.
+6. The Upload State Store identifies previously uploaded files.
+7. The Filename Format Detector identifies the format of each new file.
+8. The Filename Parser extracts structured metadata.
+9. The Playlist Resolver determines playlist assignments.
+10. The Metadata Builder creates the YouTube metadata.
+11. The YouTube Integration Component uploads the video.
+12. The YouTube Integration Component assigns playlists.
+13. The Upload State Store records the successful upload.
+14. The CLI displays the processing result.
 
 
 ## 6\. Runtime View
@@ -288,16 +296,18 @@ Coordinates the complete processing workflow.
 4. GVIP scans the configured directory tree.
 5. GVIP resolves discovered `.lnk` files using PowerShell.
 6. GVIP finds `.mp4` files in the configured and resolved directories.
-7. GVIP compares each file with the upload state file.
-8. GVIP skips files already recorded as successfully uploaded.
-9. GVIP detects the filename format for each new file.
-10. GVIP parses the filename.
-11. GVIP extracts the title, description, recording date, playlists, tags, and audience setting.
-12. GVIP constructs the YouTube upload request.
-13. GVIP uploads the video.
-14. GVIP assigns the video to the resolved playlists.
-15. GVIP records the successful upload.
-16. GVIP reports the result to the user.
+7. GVIP compares each file with the ingore filename store
+8. GVIP skips files which are to be ignored.
+9. GVIP compares each file with the upload state store.
+10. GVIP skips files already recorded as successfully uploaded.
+11. GVIP detects the filename format for each new file.
+12. GVIP parses the filename.
+13. GVIP extracts the title, description, recording date, playlists, tags, and audience setting.
+14. GVIP constructs the YouTube upload request.
+15. GVIP uploads the video.
+16. GVIP assigns the video to the resolved playlists.
+17. GVIP records the successful upload.
+18. GVIP reports the result to the user.
 
 ### 6.2 Filename Parsing Scenario
 
@@ -331,7 +341,6 @@ If an upload fails:
 * The file will not be marked as successfully uploaded.
 * The file will remain eligible for a future retry.
 
-\---
 
 ## 7\. Deployment View
 
@@ -877,9 +886,9 @@ GVIP should log or display:
 * The process is repeatable and automatable.
 * Each format can be independently tested.
 
-### 9.6 Six Explicit Filename Formats
+### 9.6 Seven Explicit Filename Formats
 
-**Decision:** Initially support six explicitly defined filename formats.
+**Decision:** Initially support seven explicitly defined filename formats.
 
 **Rationale:**
 
@@ -907,7 +916,15 @@ GVIP should log or display:
 * PowerShell provides access to Windows shortcut properties.
 * Users can organize video directories using shortcuts.
 
-\---
+### 9.9 Ignore File
+
+**Decision:** Store regular expressions of file names which should be ignored and not uploaded to YouTube. A simple text file whith one regular expression per line. If an `.mp4` file name matches any of the regular expressions in the file, the file will be skipped, not processed, and not uploaded to YouTube.
+
+**Rationale:**
+
+* A database is unnecessary for the initial scope.
+* A local file is easy to back up and inspect.
+* The solution remains lightweight.
 
 ## 10\. Quality Requirements
 
@@ -918,7 +935,7 @@ GVIP should support:
 * directory traversal,
 * `.lnk` resolution,
 * `.mp4` discovery,
-* six filename formats,
+* seven filename formats,
 * filename parsing,
 * title generation,
 * description generation,
@@ -927,4 +944,5 @@ GVIP should support:
 * audience assignment,
 * playlist assignment,
 * duplicate-upload prevention,
-* 
+* ignore-upload prevention
+
