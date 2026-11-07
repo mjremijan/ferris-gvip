@@ -98,7 +98,7 @@ The business context describes the system from a business perspective by identif
 
 | Partner Organization | Partner System | Data Shared | Data Format | Interface Direction | Transfer Direction | Execution Mode | Implementation |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| Google | YouTube | Video binary with its metadata | JSON, <br /> Binary | Outbound | Push | On-demand | Google Java Client API |
+| Google | YouTube | Video binary with its metadata | Binary,<br /> JSON| Outbound | Push | On-demand | Google Java Client API |
 
 
 ### 3.2 Technical context
@@ -277,7 +277,6 @@ Coordinates the complete processing workflow.
 12. The Upload State Store records the successful upload.
 13. The CLI displays the processing result.
 
-\---
 
 ## 6\. Runtime View
 
@@ -678,7 +677,7 @@ Commentary
 * Include `Commentary` in the title when present.
 * Extract the date from the final date/time segment.
 
-### 8.7 Filename Format 6: Belt Test Montage
+### 8.7 Filename Format 6: Color Belt Test Montage
 
 #### Example
 
@@ -721,8 +720,51 @@ Belt Tests
 * Extract the date from the final date/time segment.
 * Do not assign the `Commentary` playlist unless the final rule explicitly adds it.
 
+### 8.8 Filename Format 7: Black Belt Test Montage
 
-### 8.8 Playlist Assignment
+#### Example
+
+```text
+Sword test montage - Haidong Gumdo 1st degree 3rd rank black belt test - Master Lim's Martial Arts, Fairview Heights, IL - Michael (2026-07-17 17.26).mp4
+```
+
+#### Extracted Properties
+
+**Title:**
+
+```text
+1st Degree 3rd Rank Black Belt Test (2026-07) - Haidong Gumdo
+```
+
+**Description:**
+
+The complete original filename without the .mp4 extension
+
+**Primary playlist:**
+
+```text
+Belt Tests
+```
+
+**Recording date based on the filename:**
+
+```text
+2026-07-17
+```
+
+#### Parsing Rules
+
+* Recognize the `Sword test montage` prefix.
+* Locate the `Haidong Gumdo` segment.
+* Extract the belt designation following that segment.
+* Extract the test type.
+* Normalize the extracted value to `1st Degree 3rd Rank Black Belt Test`. The first letters of each word should be capitalized
+* Assign the video to the `Belt Tests` playlist.
+* Extract the date from the final date/time segment.
+* Do not assign the `Commentary` playlist unless the final rule explicitly adds it.
+
+
+### 8.9 Playlist Assignment
 
 Each filename format determines a primary playlist.
 
@@ -745,7 +787,7 @@ Commentary
 
 The implementation must resolve playlist names to YouTube playlist IDs before assigning a video.
 
-### 8.9 Windows Shortcut Resolution
+### 8.10 Windows Shortcut Resolution
 
 GVIP may encounter `.lnk` files that point to directories containing video files.
 
@@ -761,7 +803,7 @@ The process is:
 
 PowerShell invocation must be isolated from the rest of the application and handled safely.
 
-### 8.10 Logging
+### 8.11 Logging
 
 GVIP should log or display:
 

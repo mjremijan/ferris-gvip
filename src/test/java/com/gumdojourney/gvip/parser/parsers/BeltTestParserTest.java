@@ -54,4 +54,22 @@ public class BeltTestParserTest {
         assertEquals(18, md.getTags().size());
     }
     
+
+    @Test
+    public void test3() {
+        BeltTestParser parser = new BeltTestParser();
+        String filename = "Sword test montage - Haidong Gumdo 1st degree 3rd rank black belt test - Master Lim's Martial Arts, Fairview Heights, IL - Michael (2026-07-17 17.26).mp4";
+        Optional<Metadata> mdOpt = parser.parse(null, filename);
+        assertTrue(mdOpt.isPresent());
+
+        Metadata md = mdOpt.get();
+        assertEquals(filename, md.getSourceFilename());
+        assertEquals("1st Degree 3rd Rank Black Belt Test (2026-07) - Haidong Gumdo", md.getTitle());
+        assertEquals("Sword test montage - Haidong Gumdo 1st degree 3rd rank black belt test - Master Lim's Martial Arts, Fairview Heights, IL - Michael (2026-07-17 17.26)", md.getDescription());
+        assertEquals("2026-07-17", md.getRecordingDate().toString());
+        assertEquals(1, md.getPlaylists().size());
+        assertEquals("Belt Tests", md.getPlaylists().get(0));
+        assertEquals(false, md.isMadeForKids());
+        assertEquals(18, md.getTags().size());
+    }
 }

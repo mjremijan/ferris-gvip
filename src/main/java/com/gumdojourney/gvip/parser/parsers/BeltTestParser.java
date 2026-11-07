@@ -24,11 +24,37 @@ public class BeltTestParser implements FilenameParser {
 
         Metadata md = new Metadata();
         md.setSourceFilename(filename);
-        md.setTitle(String.format("%s Belt Test (%s) - Haidong Gumdo", belt, date.substring(0,7)));
+        md.setTitle(String.format("%s Belt Test (%s) - Haidong Gumdo", capitalizeWords(belt), date.substring(0,7)));
         md.setDescription(filename);
         md.setRecordingDate(LocalDate.parse(date, DATE));
         md.setPlaylists(Arrays.asList("Belt Tests"));
         md.setMadeForKids(false);
         return Optional.of(md);
+    }
+
+    public static String capitalizeWords(String input) {
+        if (input == null || input.isEmpty()) {
+            return input;
+        }
+
+        StringBuilder result = new StringBuilder(input);
+
+        boolean newWord = true;
+
+        for (int i = 0; i < result.length(); i++) {
+            char c = result.charAt(i);
+
+            if (Character.isWhitespace(c)) {
+                newWord = true;
+            } else {
+                if (newWord && !Character.isDigit(c)) {
+                    result.setCharAt(i, Character.toUpperCase(c));
+                }
+
+                newWord = false;
+            }
+        }
+
+        return result.toString();
     }
 }

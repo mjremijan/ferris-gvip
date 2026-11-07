@@ -10,7 +10,6 @@ import java.util.Deque;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Scanner;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
@@ -28,14 +27,14 @@ import com.gumdojourney.gvip.state.StateStore;
 public class App {
     private static final Logger LOG = LoggerFactory.getLogger(App.class);
 
-    private static Scanner scanner = new Scanner(System.in);
+    //private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws Exception {
 
         AppConfig config = AppConfig.load();
         String root = config.getVideoRootDirectory();
         if (root == null || root.trim().isEmpty()) {
-            System.out.println("Error: video.rootDirectory property is not set in config/gvip.properties");
+            LOG.error("Error: video.rootDirectory property is not set in config/gvip.properties");
             System.exit(1);
         }
 
@@ -52,8 +51,8 @@ public class App {
         
         LOG.info("Discovered {} video file(s) under {}", files.size(), root);
         for (Path p : files) {
-            System.out.println("----------------------------------------");
-            System.out.println("FOUND_VIDEO=" + p);
+            LOG.info("----------------------------------------");            
+            LOG.info("FOUND_VIDEO: {}", p);
             processFile(p, pm, state, config);
         }
         LOG.info("GVIP run complete");
@@ -100,20 +99,19 @@ public class App {
         String filename = p.getFileName().toString();
         try {
             if (state.isUploaded(p)) {
-                LOG.info("Skipping already uploaded: {}", filename);
+                LOG.info(" | IS UPLOADED");
                 return;
             }
 
             Metadata md = pm.parseFilename(p).orElse(null);
             if (md == null) {
-                //LOG.warn("Unsupported filename format: {}", filename);
+                LOG.info(" | SKIPPING");
                 return;
             }
 
             logMetadataSummary(filename, md);
 
-            if (config.isDryRun()) {
-                //System.out.println("DRY_RUN_SKIP=file='" + filename + "'");
+            if (config.isDryRun()) {                
                 return;
             }
 
@@ -149,7 +147,7 @@ public class App {
         // Random number of minutes: 4, 5, 6, 7, or 8
         long minutes = ThreadLocalRandom.current().nextLong(4, 9);
 
-        System.out.println("Sleeping for " + minutes + " minute(s)...");
+        LOG.info("Sleeping for " + minutes + " minute(s)...");
         try {
             TimeUnit.MINUTES.sleep(minutes);
         } catch (InterruptedException e) {
@@ -158,10 +156,15 @@ public class App {
     }
 
     private static void logMetadataSummary(String filename, Metadata md) {
-        System.out.println(
-                "VIDEO_METADATA\n |filename='" + filename + "'\n |title='" + md.getTitle() + "'\n |description='" + md.getDescription() + "'\n |recordingDate=" + md.getRecordingDate() + "\n |playlists=" + md.getPlaylists() + "\n |tags=" + md.getTags() + "\n |madeForKids=" + md.isMadeForKids() + "\n |sourceFilename='" + md.getSourceFilename() + "'"
-        );
-        System.out.println("----------------------------------------");
-        System.out.println();
+        LOG.info(" | TO_UPLOAD");  
+        LOG.info(" | - filename='{}'", filename); 
+        LOG.info(" | - title='{}'", md.getTitle()); 
+        LOG.info(" | - description='{}'", md.getDescription()); 
+        LOG.info(" | - recordingDate='{}'", md.getRecordingDate()); 
+        LOG.info(" | - playlists='{}'", md.getPlaylists()); 
+        LOG.info(" | - tags='{}'", md.getTags()); 
+        LOG.info(" | - madeForKids='{}'", md.isMadeForKids()); 
+        LOG.info(" | - sourceFilename='{}'", md.getSourceFilename()); 
+        LOG.info("");        
     }
 }
